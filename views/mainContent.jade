@@ -1,0 +1,23 @@
+extend _Layout
+
+block content
+        //- to render meta description value
+        div.row
+            div.cols-lg-12
+                p 
+                    strong Page meta description: 
+                    | #{data[0].description}
+        //- to render page meta keywords value
+        div.row
+            div.cols-lg-12
+                P
+                    strong Page meta keywords: 
+                    | #{data[0].keyword}
+        //- to render the list of images with no alt text
+        div.row
+            div.cols-lg-12
+                P 
+                    strong Image with no alt text 
+                    ul.imageslist
+                        each value in data[0].imageSource
+                            li=value
