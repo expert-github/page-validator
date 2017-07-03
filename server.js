@@ -1,9 +1,6 @@
 var express = require('express');
 var http = require('http');
-var request = require('request'),
-    username = "palanisb",
-    password = "May@2017",
-    auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
+var request = require('request');
 const cheerio = require('cheerio');
 var S = require('string');
 var app = express()
@@ -15,7 +12,7 @@ app.use(express.static('public'))
 app.get('/validate', function (req, res) {
     var parseData = [];
 
-    request({ 'url': req.query.url, 'headers': { "Authorization": auth } }, function (error, response, body) {
+    request({ 'url': req.query.url }, function (error, response, body) {
 
         if (!error && response.statusCode == 200) {
             console.log("page found and processed")
