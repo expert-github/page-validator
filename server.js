@@ -52,7 +52,15 @@ app.get('/validate', function (req, res) {
                     var imageSrc = $(this).attr('src');
                     if (S(imageSrc).contains('_tcm')) {
                         console.log("No alt text :", S($(this).attr('src')).between('_tcm', '.').s);
-                        imageList.push(domainName + imageSrc)
+                        if(S(imageSrc).startsWith('/'))
+                        {
+                            imageList.push(domainName + imageSrc);
+                        }
+                        else
+                        {
+                            imageList.push(imageSrc);
+                        }
+                        
                     }
                 }
             });
