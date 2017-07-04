@@ -1,6 +1,8 @@
 extend _Layout
 
 block content
+        div.page-header
+            h3 #[span.label.label-default Live page SEO Details]
         //- to render meta description value
         div.row
             if(data[0].description)
@@ -22,11 +24,12 @@ block content
                     strong Page meta keywords: 
                     | Missing    
         //- to render the list of images with no alt text
-        div.row
-            div.cols-sm-12.cols-lg-12.alert.alert-info
-                P 
-                    strong Image with no alt text:
-                    hr
-                    ul.imageslist
-                        each value in data[0].imageSource
-                            li=value
+        if data[0].imageSource.length > 0
+            div.row
+                div.cols-sm-12.cols-lg-12.alert.alert-info
+                    P 
+                        strong Image with no alt text:
+                        hr
+                        ul.imageslist
+                            each value in data[0].imageSource
+                                li #[a(href=value, target='_blank')=value]

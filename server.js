@@ -1,4 +1,5 @@
 var express = require('express');
+var url = require('url');
 var http = require('http');
 var request = require('request');
 const cheerio = require('cheerio');
@@ -16,6 +17,10 @@ app.get('/validate', function (req, res) {
 
         if (!error && response.statusCode == 200) {
             console.log("page found and processed")
+
+            var pageUrl = url.parse(req.query.url, true);
+            var domainName = pageUrl.protocol + '//' + pageUrl.host;
+            console.log("domainName:", domainName)
 
             const $ = cheerio.load(body, { normalizeWhitespace: true });
 
@@ -47,7 +52,7 @@ app.get('/validate', function (req, res) {
                     var imageSrc = $(this).attr('src');
                     if (S(imageSrc).contains('_tcm')) {
                         console.log("No alt text :", S($(this).attr('src')).between('_tcm', '.').s);
-                        imageList.push(imageSrc)
+                        imageList.push(domainName + imageSrc)
                     }
                 }
             });
