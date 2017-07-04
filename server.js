@@ -23,22 +23,22 @@ app.get('/validate', function (req, res) {
             var metaKeyword;
 
             $('meta').each(function (i, item) {
-                if ($(this).attr('name') === "description") {
+                if ($(this).attr('name') === "description" || $(this).attr('name') === "Description") {
                     metaDescription = $(this).attr('content');
                 }
 
-                if ($(this).attr('name') === "keywords") {
+                if ($(this).attr('name') === "keywords" || $(this).attr('name') === "Keywords") {
                     metaKeyword = $(this).attr('content');
                 }
             }
             );
             if (!metaDescription) {
-                metaDescription = "meta tag description is empty";
+                metaDescription = "";
                 console.log("No Meta description");
             }
 
             if (!metaKeyword) {
-                metaKeyword = "meta tag keyword is empty";
+                metaKeyword = "";
                 console.log("No Meta keywords");
             }
             var imageList = [];
