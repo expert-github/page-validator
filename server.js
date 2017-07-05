@@ -50,8 +50,8 @@ app.get('/validate', function (req, res) {
             $('img').each(function (i, item) {
                 if (!$(this).attr("alt")) {
                     var imageSrc = $(this).attr('src');
-                    if (S(imageSrc).contains('_tcm')) {
-                        console.log("No alt text :", S($(this).attr('src')).between('_tcm', '.').s);
+                    //if (S(imageSrc).contains('_tcm')) {
+                        //console.log("No alt text :", S($(this).attr('src')).between('_tcm', '.').s);
                         if(S(imageSrc).startsWith('/'))
                         {
                             imageList.push(domainName + imageSrc);
@@ -61,7 +61,7 @@ app.get('/validate', function (req, res) {
                             imageList.push(imageSrc);
                         }
                         
-                    }
+                    //}
                 }
             });
 
