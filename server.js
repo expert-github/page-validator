@@ -6,6 +6,12 @@ const cheerio = require('cheerio');
 var S = require('string');
 var app = express()
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.set('views', __dirname + '/views/');
 app.set('view engine', 'jade');
 app.use(express.static('public'))
