@@ -80,12 +80,12 @@ app.get('/validate', function (req, res) {
             console.log("item value:", item);
 
             parseData.push(item);
-            res.render('mainContent', { data: parseData })
+            res.render('modalContent', { data: parseData })
         }
         else {
             console.log(error);
             console.log("Page Not found")
-            res.render('error')
+            //res.render('error')
         }
     });
 })
