@@ -4,27 +4,27 @@ block content
         //- to render meta description value
         div.row-description
             if(data[0].description)
-                div.alert-success
+                div.alert.msg-success
                     strong Page meta description: 
                     | Success
             else
-                div.alert-danger
+                div.alert.msg-danger
                     strong Page meta description: 
                     | Missing            
         //- to render page meta keywords value
         div.row-keywords
             if(data[0].keyword)
-                div.alert-success
+                div.alert.msg-success
                     strong Page meta keywords: 
                     | Success
             else
-                div.alert-danger
+                div.alert.msg-danger
                     strong Page meta keywords: 
                     | Missing    
         //- to render the list of images with no alt text
         if data[0].imageSource.length > 0
             div.row-imageslist
-                div.alert-info
+                div.alert.msg-info
                     P 
                         strong Image with no alt text:
                         hr
